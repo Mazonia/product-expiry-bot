@@ -18,10 +18,10 @@ Simply snap and send a photo of any grocery item, medicine box, utility bill, or
 - 🥬 **Zero Food Waste**: Check expiring fridge and pantry items (`/expiring 5`) to prioritize meal planning.
 - ✍️ **Manual Entry Supported**: `/add <Item Name> <YYYY-MM-DD> [Category] [Amount]`.
 - 📊 **Quick Inquiries**:
-  - `/list` — Display all tracked active items.
-  - `/expiring <days>` — View items expiring within the given days.
-  - `/bills` — Summary of pending bills and total unpaid amount.
-  - `/delete <id>` — Remove an item from the database.
+  - `/list` - Display all tracked active items.
+  - `/expiring <days>` - View items expiring within the given days.
+  - `/bills` - Summary of pending bills and total unpaid amount.
+  - `/delete <id>` - Remove an item from the database.
 - 🏷️ **Dedicated Windows Process Name**: Runs as `expiry-bot.exe` with console title `Bill-Expiry-Alert-Bot` for instant Task Manager identification.
 
 ---
@@ -95,5 +95,20 @@ Gemini 2.0 Flash Vision is used for automatic photo OCR and item extraction.
 
 ---
 
-## 📄 License
+## ❓ Frequently Asked Questions (FAQ)
+
+### How does the bot read expiration dates from photos?
+The bot uses Google Gemini 2.0 Flash Vision AI with structured JSON prompting. When you send a photo of a receipt, medicine box, or grocery item, Gemini analyzes the image, extracts the text, identifies the expiry date, categorizes the item, and parses any monetary cost.
+
+### Can I track unpaid utility bills and recurring expenses?
+Yes. Send /bills to view all tracked utility bills, due dates, and the cumulative pending balance. You can add bills by sending a photo of the invoice or using /add Water-Bill 2026-11-15 Utilities 45.00.
+
+### When does the bot send notification reminders?
+The built-in scheduler runs every morning at the configured time (default 09:00 AM) and alerts you for items expiring today, items expiring in 3 days, and items expiring in 7 days.
+
+---
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

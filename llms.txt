@@ -1,0 +1,50 @@
+# AI Bill & Expiry Date Alert Telegram Bot
+
+> Smart Telegram assistant that tracks grocery expirations, medication schedules, utility bills, and warranty renewals using Google Gemini 2.0 Flash Vision AI and automated daily reminders.
+
+## Project Overview
+- **Name:** Product Expiry & Bill Alert Bot
+- **Repository:** https://github.com/Mazonia/product-expiry-bot
+- **License:** MIT
+- **Runtime:** Python 3.10+
+- **Core Dependencies:** `python-telegram-bot` v21+, `google-genai` (Gemini 2.0 Flash), `apscheduler`, `sqlite3`
+
+## Key Capabilities
+- **Gemini Vision OCR:** Users take a photo of any grocery product, medicine box, utility invoice, or receipt. Gemini extracts item name, expiration/due date, category, and amount automatically.
+- **Proactive Notification Engine:** Automated background scheduler checks items every morning:
+  - Critical Same-Day Alert: For items expiring or bills due today.
+  - 3-Day Final Warning: Pre-expiration reminder for groceries and medications.
+  - 7-Day Early Warning: Planning reminder for bills and subscription renewals.
+- **Financial Bill Tracker:** Calculates total pending unpaid bill sums and upcoming payment deadlines (`/bills`).
+- **Pantry & Fridge Manager:** List items expiring within custom day ranges (`/expiring 5`) to eliminate food waste.
+- **Local SQLite Persistence:** Complete offline privacy. All item records and notification timestamps are stored in a local SQLite database.
+
+## Quickstart & Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/Mazonia/product-expiry-bot.git
+cd product-expiry-bot
+
+# Set up virtual environment
+python -m venv venv
+.\venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Configure bot token and Gemini API key
+copy .env.example .env
+# Edit .env with TELEGRAM_BOT_TOKEN, TELEGRAM_USER_ID, and GEMINI_API_KEY
+
+# Launch the bot
+python bot.py
+```
+
+## Primary Commands
+- `/start` - Welcome message and quick instructions
+- `/list` - Display all currently tracked active items
+- `/expiring <days>` - View items expiring within the specified number of days
+- `/bills` - Summary of pending bills and total unpaid amount
+- `/add <Name> <YYYY-MM-DD> [Category] [Amount]` - Manually register an item
+- `/delete <id>` - Remove an item from tracking
